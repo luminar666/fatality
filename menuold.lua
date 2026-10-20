@@ -4051,23 +4051,6 @@ function Fatality:CreateElements(Parent : Frame , ZIndex : number , Event : Bind
 		if Config.Flag then
 			Fatality.WindowFlags[FatalWindow][Config.Flag.."Slider"] = Respons
 			
-			Fatality:CreateElementKeybind(Slider, "Slider", function()
-				return Config.Default
-			end, function(val)
-				Config.Default = val
-				TweenService:Create(boxli, TweenInfo.new(0.2), {
-					Size = UDim2.new((Config.Default - Config.Min) / (Config.Max - Config.Min), 0, 1, 0)
-				}):Play()
-				ValueText.Text = string.format('%s%s', tostring(Config.Default), tostring(Config.Type))
-			end, Config.Callback, Config.Flag.."Slider", Config.Name)
-		end
-
-		return Respons
-	end
-
-	function elements:AddButton(Config: Button)
-		Config = Config or {};
-		Config.Name = Config.Name or "Slider";
 		Config.Risky = Config.Risky or false;
 		Config.Callback = Config.Callback or function() end;
 
